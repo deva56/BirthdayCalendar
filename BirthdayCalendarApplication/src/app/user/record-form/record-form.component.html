@@ -1,0 +1,28 @@
+<div class="card" style="background-color: aliceblue;">
+    <form #form="ngForm" style="margin: 5%;" (ngSubmit)="submit(form)">
+        <input type="hidden" name="birthdayRecordId" [value]="recordService.formData.id" />
+        <input type="hidden" name="birthdayRecordUserName" [value]="recordService.formData.userName" />
+        <div class="form-group row">
+            <label for="personName" class="col-md-4 col-form-label text-md-right">Person name</label>
+            <div class="col-md-6">
+                <input type="text" id="personName" class="form-control form-control-lg" name="personName" required
+                    autofocus placeholder="Person name" #personName="ngModel"
+                    [(ngModel)]="recordService.formData.personName" minlength="3" maxlength="64">
+                <span *ngIf="personName.invalid && (personName.dirty || personName.touched)">Please provide a valid
+                    name</span>
+            </div>
+        </div>
+        <div class="form-group row" style="margin-top: 1%;">
+            <label for="birthdayDate" class="col-md-4 col-form-label text-md-right">Birthday date</label>
+            <div class="col-md-6">
+                <input type="date" id="birthdayDate" class="form-control form-control-lg" name="birthdayDate" required
+                    placeholder="Birthday date" #birthdayDate="ngModel" [(ngModel)]="recordService.formData.birthdayDate">
+                <span *ngIf="birthdayDate.invalid && (birthdayDate.dirty || birthdayDate.touched)">Please provide a
+                    valid birthday date</span>
+            </div>
+        </div>
+        <div class="form-group" style="padding-top: 2%;text-align: center;">
+            <button class="btn btn-primary btn-lg btn-block" style="width:50%" [disabled]="form.invalid">SUBMIT</button>
+        </div>
+    </form>
+</div>

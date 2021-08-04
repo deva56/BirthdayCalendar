@@ -1,0 +1,24 @@
+<header>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-blue">
+    <div class="col-md-10" style="margin-left: 10px;">
+      <a aria-label="Home" class="logo" routerLink="/">
+        <img src="/assets/logo.svg" class="logo-icon" />
+        <span class="header-text">Birthday Calendar</span>
+      </a>
+    </div>
+
+    <div *ngIf="this.isLoggedIn" ngbDropdown class="d-inline-block" style="margin-right: 10px;">
+      <button class="btn btn-primary" id="dropdownBasic1" ngbDropdownToggle>{{loggedInUsername}}</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button (click)="goToUserProfile()" ngbDropdownItem>Profile</button>
+        <button (click)="logout()" ngbDropdownItem>Logout</button>
+      </div>
+    </div>
+
+
+    <div *ngIf="!this.isLoggedIn" class="col-md-2" style="margin-right: 10px;">
+      <a routerLink="/signup" class="float-right signup mr-2" style="margin-right: 10px;">Sign up</a>
+      <a routerLink="/login" class="float-right login mr-2">Login</a>
+    </div>
+  </nav>
+</header>
